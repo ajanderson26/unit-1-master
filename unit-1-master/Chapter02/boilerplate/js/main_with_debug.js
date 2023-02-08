@@ -1,10 +1,10 @@
-//call the initialize function when the document has loaded
+//the function executes when the event is loaded --> i moved this to the top of the script because I think it makes more sense but it does the same thing as window.onload
 document.addEventListener('DOMContentLoaded', initialize)
 //initialize function called when the script loads
 function initialize() {
 	cities();
 };
-//how does this work because the variable is written before it is declared and it doesnt work when I take it away
+//it is so silly that you have to write cities before it is defined in the function but I think its like naming the recipe before the instructions tell you what is in the recipe. 
 function cities() {
 	var cityPop = [
 		{
@@ -23,27 +23,26 @@ function cities() {
 			city: 'Superior',
 			population: 27244
 		}
-		//creates array that contains city and population data
+		//creates array that contains city and population data --> this is like naming the ingredients of the recipe and how much of each ingredient to add in.
 	];
 	//create a table element
 	var table = document.createElement("table");
 
-	//create a header row element and append it to the table
+	//makes the header of the table which is the element that was created above
 	var headerRow = document.createElement("tr");
 	table.appendChild(headerRow);
 
-	//create the "City" and "Population" column headers//I dont know what line 34 is doing
+	//create the "City" and "Population" column headers --> <th> with the city in the tag means that the City header goes in the <th> section of the wireframe and same for Population
 	headerRow.insertAdjacentHTML("beforeend", "<th>City</th><th>Population</th>")
 
-	//loop to add a new row for each city
+	//forEach is a loop element i think? It calls the loop function? This section confuses me a bit no matter how long I look through the example I could not get the loop to work in the chapter practice and I need to be walked through step by step
 	cityPop.forEach(function (cityObject) {
-		//assign longer html strings to a variable
+		//assign longer html strings to a variable --> not sure what this comment means but it was in the answer key. I also need this explained.
 		var rowHtml = "<tr><td>" + cityObject.city + "</td><td>" + cityObject.population + "</td></tr>";
-		//add the row's html string to the table
 		table.insertAdjacentHTML('beforeend', rowHtml);
 	})
 
-	//append the table element to the div
+	//append the table element to the div--> I also need this explained to me --> im not sure why it needs to appended.
 	document.querySelector("#myDiv").appendChild(table);
 
 	addColumns(cityPop);
@@ -51,14 +50,14 @@ function cities() {
 
 };
 
-//function to add a new column to the table
+//This function adds a column called cityPop to the table 
 function addColumns(cityPop) {
-	//this function is adding columns and rows to the array 
+	
 
-	//select all column rows
+	//This calls all the rows that are in the wire frame section called tr
 	var rows = document.querySelectorAll("tr")
-	//loop to add a new column to each row
-
+	
+//This loops the new column cityPop into the table 
 	document.querySelectorAll("tr").forEach(function (row, i) {
 
 		if (i == 0) {
@@ -81,6 +80,7 @@ function addColumns(cityPop) {
 			};
 
 			row.insertAdjacentHTML('beforeend', '<td>' + citySize + '</td>')
+			//this gives direction on where citySize needs to go in the table and the part of the wireframe it belongs
 		};
 	});
 };
@@ -88,10 +88,10 @@ function addColumns(cityPop) {
 function addEvents() {
 	//this function makes the text change to a random color when the mouse hoovers over --> function is called whenever a specialized event occurs
 
-	//select the table element
+	//adds this function to the table 
 	table = document.querySelector("table");
 
-	//add mouse over the event
+	//the event occurs when the user puts their mouse over the event
 	document.querySelector("table").addEventListener("mouseover", function (){
 
 		var color = "rgb(";
@@ -103,7 +103,7 @@ function addEvents() {
 			//rounds number to the closets whole number and then multiples 255 which is max amount of color for rgb color scheme
 
 			color += random;
-			// adds the value of the right operand to a variable and assigns the result to the variable. 
+			// This allows for a random color to picked when the event is called 
 
 			if (i < 2) {
 				color += ",";
@@ -112,18 +112,18 @@ function addEvents() {
 				color += ")";
 			};
 		}
-		//style table with the random style 
+		 
 		table.style.color = color;
 
 
 	});
-
+//this allows for when the text of the table is clicked on the pop up comes up --> the event is clicking?
 	function clickme() {
-
+		//this is the message that pops up when the event is called --> the function must be called and then the EventListener is added 
 		alert('Hey, you clicked me!');
 	};
 
-	//event listener for the click
+	//event listener for the click of the mouse
 	table.addEventListener("click", clickme)
 };
 
