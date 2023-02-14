@@ -39,7 +39,7 @@ function cities() {
 	cityPop.forEach(function (cityObject) {
 		//assign longer html strings to a variable --> not sure what this comment means but it was in the answer key. I also need this explained.
 		var rowHtml = "<tr><td>" + cityObject.city + "</td><td>" + cityObject.population + "</td></tr>";
-		table.insertAdjacentHTML('beforeend', rowHtml); //inserts html snippet into the table --> 
+		table.insertAdjacentHTML('beforeend', rowHtml);
 	})
 
 	//append the table element to the div--> I also need this explained to me--> longer way to do the operation .intersetAdjacentHTML--> appends a child element?--> example rows are a "child" to the 'table' element
@@ -57,7 +57,7 @@ function addColumns(cityPop) {
 	//This calls all the rows that are in the wire frame section called tr
 	var rows = document.querySelectorAll("tr")
 	
-//This loops the new column cityPop into the table --> methods have dots functions do not
+//This loops the new column cityPop into the table 
 	document.querySelectorAll("tr").forEach(function (row, i) {
 
 		if (i == 0) {
@@ -128,6 +128,3 @@ function addEvents() {
 };
 
 //window.onload = initialize();
-
-
-//notes on AJAX 
